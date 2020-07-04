@@ -1,0 +1,3 @@
+<?php 
+include('../connect.php');
+$loadType=$_POST['loadType']; $loadId=$_POST['loadId']; if($loadType=="province"){  $sql="select id,province_name from province where country_id='".$loadId."' order by province_name asc"; }else{  $sql="select id,city_name from city where province_id='".$loadId."' order by city_name asc"; } $res=mysql_query($sql); $check=mysql_num_rows($res); if($check > 0){  $HTML="";  while($row=mysql_fetch_array($res)){   $HTML.="<option value='".$row['id']."'>".$row['1']."</option>";  }  echo $HTML; } ?> 
